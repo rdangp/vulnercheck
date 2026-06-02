@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>URL Vulnerability Scanner</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app">
+    <section class="hero">
+      <div>
+        <p class="badge">Passive Security Scanner</p>
+        <h1>URL Vulnerability Scanner</h1>
+        <p class="sub">
+          Cek konfigurasi keamanan website secara pasif: HTTPS, SSL/TLS, security headers,
+          CORS, cookie flags, dan indikator hardening dasar.
+        </p>
+      </div>
+      <div class="shield">🛡️</div>
+    </section>
+
+    <section class="card">
+      <label for="urlInput">Masukkan URL website</label>
+      <div class="scan-row">
+        <input id="urlInput" type="url" placeholder="https://example.com" autocomplete="off" />
+        <button id="scanBtn">Scan URL</button>
+      </div>
+      <p class="hint">
+        Gunakan hanya untuk website milik sendiri atau yang Anda punya izin tertulis untuk diuji.
+      </p>
+    </section>
+
+    <section id="loading" class="card loading hidden">
+      <div class="spinner"></div>
+      <p>Memeriksa target secara pasif...</p>
+    </section>
+
+    <section id="errorBox" class="error hidden"></section>
+
+    <section id="result" class="hidden">
+      <div class="summary-grid">
+        <div class="score-card">
+          <span>Security Score</span>
+          <strong id="score">-</strong>
+          <small id="grade">Grade -</small>
+        </div>
+        <div class="mini-card">
+          <span>Status</span>
+          <strong id="status">-</strong>
+        </div>
+        <div class="mini-card">
+          <span>Response Time</span>
+          <strong id="time">-</strong>
+        </div>
+        <div class="mini-card">
+          <span>HTTPS / TLS</span>
+          <strong id="tls">-</strong>
+        </div>
+      </div>
+
+      <section class="card">
+        <h2>Target</h2>
+        <div id="targetInfo" class="kv"></div>
+      </section>
+
+      <section class="card">
+        <div class="section-head">
+          <h2>Temuan Risiko</h2>
+          <button id="exportBtn" class="secondary">Export JSON</button>
+        </div>
+        <div id="findings"></div>
+      </section>
+
+      <section class="card">
+        <h2>Checklist yang Lolos</h2>
+        <ul id="passed"></ul>
+      </section>
+
+      <section class="card">
+        <h2>Raw Security Headers</h2>
+        <pre id="headers"></pre>
+      </section>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
